@@ -1,0 +1,94 @@
+**********************************************************************************************
+***                                                                                        ***
+***                          COMPUTER ARCHITECTURE AND TECHNOLOGY                          ***
+***                                                                                        ***
+**********************************************************************************************
+                                                                                              
+                                          Question 2.2                                        
+                                                                                              
+ Running list of command into a shell script and automate execution                           
+                                                                                              
+ Student: Yuri Bertozzi                                                                       
+                                                                                              
+ Date: April 2024                                                                             
+                                                                                              
+**********************************************************************************************
+                                                                                              
+*  First command: date                                                                       *
+*  date is used to display the system date and time.                                         *
+*  date is: + Thu Apr 11 21:22:21 UTC 2024                                                                         
+                                                                                              
+                                                                                              
+*  Second  command: hostname                                                                 *
+*  hostname is used to obtain DNS and NIS.                                                   *
+*  hostname is: + YuriBertozziCATC                                                                 
+                                                                                              
+                                                                                              
+*  Third command: arch                                                                       *
+*  arch is displaying the architecture of the machine.                                       *
+*  arch is: + x86_64                                                                         
+                                                                                              
+                                                                                              
+*  Fourth command: uname -a                                                                  *
+*  uname display informations about Linux machine, -a is all                                 *
+*  uname -a is: + *  Linux YuriBertozziCATC 5.15.0-1057-azure #65~20.04.1-Ubuntu SMP Mo
+*  n Feb 12 17:26:40 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux                                   
+                                                                                              
+                                                                                              
+*  Fifth command: uptime                                                                     *
+*  uptime is showing how long the machine is running.                                        *
+*  uptime is: + *   21:22:21 up 22 min,  1 user,  load average: 0.00, 0.00, 0.00                                       
+                                                                                              
+                                                                                              
+*  Sixth command: whoami                                                                     *
+*  whoami shows the name of the current user                                                 *
+*  whoami is: + *  yuribertozzi                                       
+                                                                                              
+                                                                                              
+*  Seventh command: who                                                                      *
+*  who is showing username, terminal ID, login times, and IP address                         *
+*  who is: + *  yuribertozzi pts/0        2024-04-11 21:01 (54.240.197.235)                                             
+                                                                                              
+                                                                                              
+*  Eight command: w                                                                          *
+*  w gives information about who is using the computer.                                      *
+*  w is: + *   21:22:21 up 22 min,  1 user,  load average: 0.00, 0.00, 0.00
+*  USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHA
+*  T
+*  yuribert pts/0    54.240.197.235   21:01    5.00s  0.05s  0.00s /b
+*  in/bash ./myProject.sh                                                 
+                                                                                              
+                                                                                              
+*  Ninth command: top                                                                        *
+*  top is showing list of process that are running.                                          *
+*  top - 21:22:22 up 22 min,  1 user,  load average: 0.00, 0.00, 0.00
+*  Tasks: 103 total,   1 running, 102 sleeping,   0 stopped,   0 zombie
+*  %Cpu(s):  0.0 us,  6.2 sy,  0.0 ni, 93.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+*  MiB Mem :    844.0 total,    284.2 free,    229.7 used,    330.1 buff/cache
+*  MiB Swap:      0.0 total,      0.0 free,      0.0 used.    470.5 avail Mem 
+                                                                                              
+                                                                                              
+*  Tenth command: history                                                                    *
+*  history display the list of the command input in the shell.                               *
+*  the last 15 command of history are:                                                        
+*  vim myProject.sh 
+*  ./myProject.sh 
+*  ls -l
+*  vim myProject.sh 
+*  ./myProject.sh 
+*  vim myProject.sh 
+*  ./myProject.sh 
+*  vim myProject.sh 
+*  ./myProject.sh 
+*  vim myProject.sh 
+*  ./myProject.sh 
+*  vim myProject.sh 
+*  ./myProject.sh 
+*  vim myProject.sh 
+*  ./myProject.sh 
+                                                                                              
+                                  **** end of script ****                                     
+***                                                                                        ***
+***                                  copyright Yuri :)                                     ***
+***                                                                                        ***
+**********************************************************************************************
