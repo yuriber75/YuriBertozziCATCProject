@@ -7,7 +7,7 @@ calculate_july_salary() {
     local manager=$3
 
     if [[ $manager -eq 1 ]]; then
-        echo "$(echo "scale=4; $salary_january * 1 + $salary_january * $percentage_increase / 100" | bc)"
+        echo "$(echo "scale=5; $salary_january * 1 + $salary_january * $percentage_increase / 100" | bc -l)"
     else
         echo "$salary_january"
     fi
@@ -19,7 +19,7 @@ calculate_january_salary() {
     local starting_level=$2
     local level=$3
 
-    echo "$(echo "scale=4; $starting_salary * (1.5 ^ ($level - 1))" | bc)"
+    echo "$(echo "scale=5; $starting_salary * (1.5 ^ ($level - 1))" | bc -l)"
 }
 
 # Function to calculate the January salary if the level is the same as the previous year
@@ -27,7 +27,7 @@ calculate_january_salary_same_level() {
     local salary_july=$1
     local percentage_increase=$2
 
-    echo "$(echo "scale=4; $salary_july * 1 + $salary_july * $percentage_increase / 100" | bc)"
+    echo "$(echo "scale=5; $salary_july * 1 + $salary_july * $percentage_increase / 100" | bc -l)"
 }
 
 # Function to generate the salary table for the next 20 years
@@ -42,7 +42,7 @@ generate_salary_table() {
     local salary_january=""
     local salary_july=""
 
-    echo "          Year       | Level    | January Salary  | July Salary (if manager)"
+    printf "          %-11s | %-12s | %-29s | %-20s\n" "Year" "Level" "January Salary" "July Salary (if manager)"
 
     for (( year=0; year<20; year++ )); do
         if (( ($year) % 4 == 0 )) && (( $level < 10 )); then
@@ -62,7 +62,8 @@ generate_salary_table() {
             salary_july=$(calculate_july_salary $salary_january $percentage_increase $manager)
         fi
 
-        echo "          Year $current_year  | Level: $level | January: $salary_january | July: $salary_july"
+	printf "          Year %-5s  | Level: %-5s | January: %-20s | July: %-20s\n" "$current_year" "$level" "$salary_january" "$salary_july"
+
 
         current_year=$((current_year + 1))
     done
