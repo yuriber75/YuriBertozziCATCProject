@@ -7,7 +7,7 @@ calculate_july_salary() {
     local manager=$3
 
     if [[ $manager -eq 1 ]]; then
-        echo "$(echo "scale=2; $salary_january * 1 + $salary_january * $percentage_increase / 100" | bc)"
+        echo "$(echo "scale=4; $salary_january * 1 + $salary_january * $percentage_increase / 100" | bc)"
     else
         echo "$salary_january"
     fi
@@ -19,7 +19,7 @@ calculate_january_salary() {
     local starting_level=$2
     local level=$3
 
-    echo "$(echo "scale=2; $starting_salary * (1.5 ^ ($level - 1))" | bc -l)"
+    echo "$(echo "scale=4; $starting_salary * (1.5 ^ ($level - 1))" | bc)"
 }
 
 # Function to calculate the January salary if the level is the same as the previous year
@@ -27,7 +27,7 @@ calculate_january_salary_same_level() {
     local salary_july=$1
     local percentage_increase=$2
 
-    echo "$(echo "scale=2; $salary_july * 1 + $salary_july * $percentage_increase / 100" | bc)"
+    echo "$(echo "scale=4; $salary_july * 1 + $salary_july * $percentage_increase / 100" | bc)"
 }
 
 # Function to generate the salary table for the next 20 years
@@ -42,10 +42,10 @@ generate_salary_table() {
     local salary_january=""
     local salary_july=""
 
-    echo "Year       | Level    | January Salary  | July Salary (if manager)"
+    echo "          Year       | Level    | January Salary  | July Salary (if manager)"
 
     for (( year=0; year<20; year++ )); do
-        if (( ($year + 1) % 4 == 0 )) && (( $level < 10 )); then
+        if (( ($year) % 4 == 0 )) && (( $level < 10 )); then
             level=$((level + 1))
         fi
 
@@ -62,20 +62,56 @@ generate_salary_table() {
             salary_july=$(calculate_july_salary $salary_january $percentage_increase $manager)
         fi
 
-        echo " Year $current_year | Level: $level | January: $salary_january | July: $salary_july"
+        echo "          Year $current_year  | Level: $level | January: $salary_january | July: $salary_july"
 
         current_year=$((current_year + 1))
     done
+
+echo ""
+echo ""
+
+echo "********************************************************************************************************"
+echo "*****                                                                                              *****"
+echo "*****                       - Thank you for using salary program scale -                           *****"
+echo "*****                                                                                              *****"
+echo "*****                                       Yuri Bertozzi                                          *****"
+echo "*****                                                                                              *****"
+echo "*****                                                                                              *****"
+echo "********************************************************************************************************"
+
+echo ""
+echo ""
+
+
 }
 
 # Main script
 clear
 
-read -p "Enter the starting salary: " starting_salary
-read -p "Enter the starting level (from 1 to 10): " starting_level
-read -p "Enter the annual percentage increase (from 2 to 5): " percentage_increase
-read -p "Is the employee a manager? (y/n): " manager_input
-
+echo "********************************************************************************************************"
+echo "*****                                                                                              *****"
+echo "*****                            - welcome to salary program scale -                               *****"
+echo "*****                                                                                              *****"
+echo "*****             in my Company there are N.10 Level from 1 the lower  to 10 the higher            *****"
+echo "*****                                                                                              *****"
+echo "*****                            every 4 year your level will increase                             *****"
+echo "*****                                                                                              *****"
+echo "*****     every employee will receive an annual review, only manager have double raise per year    *****"
+echo "*****                                                                                              *****"
+echo "*****        Every level earn 50% more of the previous level   (example L1 10k  -> L2 15K          *****"
+echo "*****                                                                                              *****"
+echo "*****                                                                                              *****"
+echo "*****                                                                                              *****"
+echo "*****                                                                                              *****"
+echo "********************************************************************************************************"
+echo ""
+echo ""
+read -p "          Enter the starting salary (minimum annual wage for L1): " starting_salary
+read -p "          Enter the starting level (from 1 -operations  to 10 -CEO): " starting_level
+read -p "          Enter the annual percentage increase (from 2 to 5 - note no OUTBOUND ERROR SET ): " percentage_increase
+read -p "          Is the employee a manager? (y/n): " manager_input
+echo ""
+echo ""
 manager=0
 if [[ $manager_input == "y" ]]; then
     manager=1
